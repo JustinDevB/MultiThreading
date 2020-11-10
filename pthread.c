@@ -12,7 +12,7 @@ pthread_mutex_t lock;
 int tid[NT];
 
 /**
- * Compile with gcc -o h4 h4.c -lm
+ * Compile with gcc -o h4 h4.c -lm -lpthread
  */
 
 int compute_value(int start, int chunk) {
@@ -43,7 +43,6 @@ void *run(int *tid)
 
 int main(int argc, char *argv[])
 {
-  /* Leave the following unmodified: */
   if (argc > 1) srand(atoi(argv[1]));
   value = 0;
   data = malloc(sizeof(unsigned char) * DATASIZE);
@@ -53,7 +52,6 @@ int main(int argc, char *argv[])
     data[i] = (unsigned char)(rand() % 100);
   }
 
-  /* Add thread support from here: */
 
   pthread_t th[NT];
   pthread_mutex_init(&lock, NULL);
